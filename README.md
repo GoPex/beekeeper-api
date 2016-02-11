@@ -88,11 +88,11 @@ Usage examples
 require 'beekeeper'
 
 # Assuming that your Beekeeper instance is running on your localhost port 3000
-Beekeeper.url = http://localhost:3000
+Beekeeper.url = 'http://localhost:3000'
 
 # Assuming that Beekeeper was launched with -e 1337_API_KEY=ALMOST_PASTED_IT
 Beekeeper.access_id = 1337
-Beekeeper.api_key = ALMOST_PASTED_IT
+Beekeeper.api_key = 'ALMOST_PASTED_IT'
 
 # Let's get started
 Beekeeper::Info.version
@@ -142,11 +142,11 @@ And write all Beekeeper-api configuration there, for example:
 ```ruby
 # Configure Beekeeper connection
 # Assuming that your Beekeeper instance is running on your localhost port 3000
-Beekeeper.url = http://localhost:3000
+Beekeeper.url = 'http://localhost:3000'
 
 # Assuming that Beekeeper was launched with -e 1337_API_KEY=ALMOST_PASTED_IT
 Beekeeper.access_id = 1337
-Beekeeper.api_key = ALMOST_PASTED_IT
+Beekeeper.api_key = 'ALMOST_PASTED_IT'
 ```
 
 Then add `require 'beekeeper'` whenever you want to use beekeeper-api.

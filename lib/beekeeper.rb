@@ -7,6 +7,8 @@ require 'api-auth'
 # The top-level module for this gem. It's purpose is to hold global
 # configuration variables that are used as defaults in other classes.
 module Beekeeper
+  attr_accessor :creds, :logger
+
   require 'beekeeper/error'
   require 'beekeeper/util'
   require 'beekeeper/connection'
@@ -47,14 +49,6 @@ module Beekeeper
   def options=(new_options)
     @options = env_options.merge(new_options || {})
     reset_connection!
-  end
-
-  def logger
-    logger ||= Logger.new(STDOUT)
-  end
-
-  def logger=(new_logger)
-    logger = new_logger
   end
 
   def env_access_id
