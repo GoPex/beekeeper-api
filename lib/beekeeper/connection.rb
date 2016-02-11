@@ -6,23 +6,14 @@ class Beekeeper::Connection
   attr_reader :url, :access_id, :options
 
   def initialize(url, access_id, options)
-    case
-    when !url.is_a?(String)
-      raise ArgumentError, "Expected a String, got: '#{url}'"
-    when !access_id.is_a?(String)
-      raise ArgumentError, "Expected an String, got: '#{access_id}'"
-    when !options.is_a?(Hash)
-      raise ArgumentError, "Expected a Hash, got: '#{options}'"
+    uri = URI.parse(url)
+    puts uri
+    if uri.scheme == "unix"
+      @url, @access_id, @options = 'unix:///', access_id, {socket: uri.path}.merge(options)
+    elsif uri.scheme =~ /^(https?|tcp)$/
+      @url, @access_id, @options = url, access_id, options
     else
-      uri = URI.parse(url)
-      puts uri
-      if uri.scheme == "unix"
-        @url, @access_id, @options = 'unix:///', access_id, {socket: uri.path}.merge(options)
-      elsif uri.scheme =~ /^(https?|tcp)$/
-        @url, @access_id, @options = url, access_id, options
-      else
-        @url, @access_id, @options = "http://#{uri}", access_id, options
-      end
+      @url, @access_id, @options = "http://#{uri}", access_id, options
     end
   end
 
