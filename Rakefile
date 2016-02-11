@@ -8,3 +8,7 @@ Rake::TestTask.new(:test) do |t|
 end
 
 task :default => :spec
+
+task :console do
+  exec "irb -r beekeeper-api -I ./lib"
+end
