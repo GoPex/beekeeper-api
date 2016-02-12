@@ -62,6 +62,15 @@ bee = Beekeeper::Bee.create(image, entrypoint: entrypoint, parameters: [param, ]
  => new instance, Beekeeper::Bee
 ```
 
+#### Destroy a bee
+
+```ruby
+status = Beekeeper::Bee.delete(id)
+ => status, String
+```
+
+#### Manage your living bee
+
 ```ruby
 bee.status!
  => status, String, @last_status updated
@@ -70,13 +79,6 @@ bee.status!
 ```ruby
 bee.delete!
  => status, String, @last_status updated
-```
-
-### Destroy a bee
-
-```ruby
-status = Beekeeper::Bee.delete(id)
- => status, String
 ```
 
 Usage examples
