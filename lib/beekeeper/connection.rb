@@ -7,7 +7,6 @@ class Beekeeper::Connection
 
   def initialize(url, access_id, options)
     uri = URI.parse(url)
-    puts uri
     if uri.scheme == "unix"
       @url, @access_id, @options = 'unix:///', access_id, {socket: uri.path}.merge(options)
     elsif uri.scheme =~ /^(https?|tcp)$/
