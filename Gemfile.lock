@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    beekeeper-api (0.1.0)
+    beekeeper-api (0.2.0)
       api-auth
       json
       rest-client

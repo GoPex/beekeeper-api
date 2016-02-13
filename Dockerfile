@@ -1,7 +1,7 @@
 # Uses GoPex ubuntu_ruby stock image
 FROM gopex/ubuntu_ruby:2.3.0
 MAINTAINER Albin Gilles "gilles.albin@gmail.com"
-ENV REFRESHED_AT 2016-02-08.1
+ENV REFRESHED_AT 2016-02-13
 
 # Create a working directory for our gem
 RUN mkdir /beekeeper-api
