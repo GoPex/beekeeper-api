@@ -12,8 +12,7 @@ class Beekeeper::Bee
   end
 
   def delete!
-    response = connection.delete Beekeeper::Bee.path_for_bees(@id)
-    @last_status = response['status']
+    @last_status = self.class.delete(id, connection)
   end
 
   def self.delete(id, connection: Beekeeper.connection)
