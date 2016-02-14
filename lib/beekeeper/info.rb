@@ -1,13 +1,13 @@
 class Beekeeper::Info
-  def self.version(connection=Beekeeper.connection)
+  def self.version(connection: Beekeeper.connection)
     connection.get path_for('version')
   end
 
-  def self.docker_version(connection=Beekeeper.connection)
+  def self.docker_version(connection: Beekeeper.connection)
     connection.get path_for('docker_version')
   end
 
-  def self.docker(connection=Beekeeper.connection)
+  def self.docker(connection: Beekeeper.connection)
     connection.get path_for('docker')
   end
 
