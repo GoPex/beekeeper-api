@@ -1,5 +1,5 @@
 module Beekeeper
-  # The version of the beekeeperr-api gem.
+  # The version of the beekeeper-api gem.
   VERSION = '0.2.0'
 
   # The version of the compatible Beekeeper remote API.
