@@ -14,3 +14,7 @@ def teardown_beekeeper
   Beekeeper.access_id = nil
   Beekeeper.api_key = nil
 end
+
+def create_test_bee
+  Beekeeper::Bee.create('gopex/beekeeper_test_image:latest', entrypoint: 'tail', parameters: ['-f', '/dev/null'], ports: ['3000/tcp'])
+end

@@ -16,14 +16,14 @@ class Beekeeper::BeeTest < Minitest::Test
 
   def test_should_get_all_bees
     5.times do
-          Beekeeper::Bee.create('docker-registry.gopex.be:5000/gopex/beekeeper-api_test_image:0.1.0', entrypoint: 'tail', parameters: ['-f', '/dev/null'], ports: ['3000/tcp'])
+      create_test_bee
     end
     bees = Beekeeper::Bee.all
     assert_equal 5, bees.count
   end
 
   def test_should_create_bee
-    bee = Beekeeper::Bee.create('docker-registry.gopex.be:5000/gopex/beekeeper-api_test_image:0.1.0', entrypoint: 'tail', parameters: ['-f', '/dev/null'], ports: ['3000/tcp'])
+    bee = create_test_bee
     refute_nil bee
     assert_equal 'running', bee.last_status
 
@@ -33,7 +33,7 @@ class Beekeeper::BeeTest < Minitest::Test
   end
 
   def test_should_create_and_get_bee
-    bee = Beekeeper::Bee.create('docker-registry.gopex.be:5000/gopex/beekeeper-api_test_image:0.1.0', entrypoint: 'tail', parameters: ['-f', '/dev/null'], ports: ['3000/tcp'])
+    bee = create_test_bee
     refute_nil bee
     assert_equal 'running', bee.last_status
 
@@ -43,7 +43,7 @@ class Beekeeper::BeeTest < Minitest::Test
   end
 
   def test_should_create_and_delete_bee
-    bee = Beekeeper::Bee.create('docker-registry.gopex.be:5000/gopex/beekeeper-api_test_image:0.1.0', entrypoint: 'tail', parameters: ['-f', '/dev/null'], ports: ['3000/tcp'])
+    bee = create_test_bee
     refute_nil bee
     assert_equal 'running', bee.last_status
 
@@ -56,7 +56,7 @@ class Beekeeper::BeeTest < Minitest::Test
   end
 
   def test_should_create_and_update_bee_status
-    bee = Beekeeper::Bee.create('docker-registry.gopex.be:5000/gopex/beekeeper-api_test_image:0.1.0', entrypoint: 'tail', parameters: ['-f', '/dev/null'], ports: ['3000/tcp'])
+    bee = create_test_bee
     refute_nil bee
     assert_equal 'running', bee.last_status
     assert_equal 'running', bee.status!
