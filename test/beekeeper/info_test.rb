@@ -10,22 +10,30 @@ class Beekeeper::InfoTest < Minitest::Test
     teardown_beekeeper
   end
 
+  def test_should_get_info_ping
+    response = Beekeeper::Info.ping
+    assert_equal 'OK', response['pong']
+  end
+
+  def test_should_get_info_status
+    response = Beekeeper::Info.status
+    assert_equal 'OK', response['status']
+    assert_equal 'OK', response['docker_host_status']
+  end
+
   def test_should_get_info_version
     response = Beekeeper::Info.version
-    assert_equal Hash, response.class
     refute_nil response['version']
     refute_nil response['api_version']
   end
 
   def test_should_get_info_docker
     response = Beekeeper::Info.docker
-    assert_equal Hash, response.class
     refute_nil response['ServerVersion']
   end
 
   def test_should_get_info_docker_version
     response = Beekeeper::Info.docker_version
-    assert_equal Hash, response.class
     refute_nil response['Version']
   end
 

@@ -1,4 +1,13 @@
 class Beekeeper::Info
+
+  def self.ping(connection: Beekeeper.connection)
+    connection.get path_for('ping')
+  end
+
+  def self.status(connection: Beekeeper.connection)
+    connection.get path_for('status')
+  end
+
   def self.version(connection: Beekeeper.connection)
     connection.get path_for('version')
   end
