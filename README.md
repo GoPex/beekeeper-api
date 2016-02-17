@@ -21,7 +21,19 @@ Usage documentation
 
 ### Infos
 
-#### Get beekeeper version
+#### Ping Beekeeper
+```ruby
+Beekeeper::Info.ping
+ => JSON
+```
+
+#### Get Beekeeper status
+```ruby
+Beekeeper::Info.status
+ => JSON
+```
+
+#### Get Beekeeper version
 ```ruby
 Beekeeper::Info.version
  => JSON
@@ -97,8 +109,14 @@ Beekeeper.access_id = 1337
 Beekeeper.api_key = 'ALMOST_PASTED_IT'
 
 # Let's get started
+Beekeeper::Info.ping
+=> {"pong"=>"OK"}
+
+Beekeeper::Info.status
+=> {"status"=>"OK", "docker_host_status"=>"OK"}
+
 Beekeeper::Info.version
-=> {"version"=>"0.3.0", "api_version"=>"1"}
+=> {"version"=>"0.4.0", "api_version"=>"1"}
 
 Beekeeper::Info.docker
 => {"ID"=>"PQG4:CP74:KW4R:RO2W:MH3P:6KTD:JC4R:BZLS:BHKZ:V5KI:KDBB:6XBA", "Containers"=>2, "Images"=>386, "Driver"=>"aufs", "DriverStatus"=>[["Root Dir", "/var/lib/docker/aufs"], ["Backing Filesystem", "extfs"], ["Dirs", "394"], ["Dirperm1 Supported", "true"]], "MemoryLimit"=>true, "SwapLimit"=>false, "CpuCfsPeriod"=>true, "CpuCfsQuota"=>true, "IPv4Forwarding"=>true, "BridgeNfIptables"=>true, "BridgeNfIp6tables"=>true, "Debug"=>false, "NFd"=>30, "OomKillDisable"=>true, "NGoroutines"=>62, "SystemTime"=>"2016-02-11T08:46:28.350650478+01:00", "ExecutionDriver"=>"native-0.2", "LoggingDriver"=>"json-file", "NEventsListener"=>0, "KernelVersion"=>"4.2.0-25-generic", "OperatingSystem"=>"Ubuntu 15.10", "IndexServerAddress"=>"https://index.docker.io/v1/", "RegistryConfig"=>{"InsecureRegistryCIDRs"=>["127.0.0.0/8"], "IndexConfigs"=>{"docker.io"=>{"Name"=>"docker.io", "Mirrors"=>nil, "Secure"=>true, "Official"=>true}}, "Mirrors"=>nil}, "InitSha1"=>"6bd1e8a0cd16ab554af196c6ab421437489d902f", "InitPath"=>"/usr/lib/docker/dockerinit", "NCPU"=>4, "MemTotal"=>4024819712, "DockerRootDir"=>"/var/lib/docker", "HttpProxy"=>"", "HttpsProxy"=>"", "NoProxy"=>"", "Name"=>"AlbinOS", "Labels"=>nil, "ExperimentalBuild"=>false, "ServerVersion"=>"1.9.1", "ClusterStore"=>"", "ClusterAdvertise"=>""}
