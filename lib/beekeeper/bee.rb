@@ -5,8 +5,8 @@ class Beekeeper::Bee
   attr_accessor :connection
   attr_reader :id, :addresses, :last_status
 
-  def self.create(image, entrypoint: nil, parameters: [], ports: [], connection: Beekeeper.connection)
-    bee_options = {container: {image: image, entrypoint: entrypoint, parameters: parameters, ports: ports}}
+  def self.create(image, registry: nil, entrypoint: nil, parameters: nil, ports: nil, connection: Beekeeper.connection)
+    bee_options = {container: {image: image, registry: registry, entrypoint: entrypoint, parameters: parameters, ports: ports}}
     response = connection.post path_for_bees, bee_options
     new(connection, response)
   end

@@ -70,7 +70,7 @@ bees = Beekeeper::Bee.all
 #### Create a bee
 
 ```ruby
-bee = Beekeeper::Bee.create(image, entrypoint: entrypoint, parameters: [param, ], ports: [port, ])
+bee = Beekeeper::Bee.create(image, registry: registry, entrypoint: entrypoint, parameters: [param, ], ports: [port, ])
  => new instance, Beekeeper::Bee
 ```
 
@@ -125,6 +125,9 @@ Beekeeper::Info.docker_version
 => {"Version"=>"1.9.1", "ApiVersion"=>"1.21", "GitCommit"=>"a34a1d5", "GoVersion"=>"go1.4.2", "Os"=>"linux", "Arch"=>"amd64", "KernelVersion"=>"4.2.0-25-generic", "BuildTime"=>"Fri Nov 20 13:20:08 UTC 2015"}
 
 bee = Beekeeper::Bee.create('gopex/beekeeper_test_image:latest', entrypoint: 'tail', parameters: ['-f', '/dev/null'], ports: ['3000/tcp'])
+=> #<Beekeeper::Bee:0x005627fdfca7d0 @connection=#<Beekeeper::Connection:0x005627fdf27e18 @url="http://172.17.0.1:3001", @access_id="1337", @options={}>, @id="6b4f603d65c06c62990041016972fc18cdbe74365db7426bce3ddace55004f57", @addresses={"3000/tcp"=>"0.0.0.0:32826"}, @last_status="running">
+
+bee = Beekeeper::Bee.create('gopex/beekeeper_test_image:latest', registry: 'docker-registry.gopex.be:5000', entrypoint: 'tail', parameters: ['-f', '/dev/null'], ports: ['3000/tcp'])
 => #<Beekeeper::Bee:0x005627fdfca7d0 @connection=#<Beekeeper::Connection:0x005627fdf27e18 @url="http://172.17.0.1:3001", @access_id="1337", @options={}>, @id="6b4f603d65c06c62990041016972fc18cdbe74365db7426bce3ddace55004f57", @addresses={"3000/tcp"=>"0.0.0.0:32826"}, @last_status="running">
 
 an_other_bee = Beekeeper::Bee.get(bee.id)
